@@ -71,7 +71,7 @@ public class ClaseBase {
     }
 
     //agregar Conbinacion Teclas
-    public void agregarConvinacionTecla(By localizador, Keys key) {
+    public void agregarEnteraUnTexto(By localizador, Keys key) {
         this.driver.findElement(localizador).sendKeys(key);
     }
 
