@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import pages.DatosClientePage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.NavegacionPage;
@@ -33,6 +34,7 @@ public class Tests1 {
     private LoginPage loginPage;
     private SalirPage salirPage;
     private NavegacionPage navegacionPage;
+    private DatosClientePage datosClientePage;
 
     @BeforeSuite
     public void inicioSuitesDePreubas() {
@@ -67,6 +69,8 @@ public class Tests1 {
         loginPage = new LoginPage(homePage.getDriver());
         salirPage = new SalirPage(homePage.getDriver());
         navegacionPage = new NavegacionPage(homePage.getDriver());
+        datosClientePage = new DatosClientePage(homePage.getDriver());
+
         String url = "https://www.tiendanube.com/";
         homePage.cargarPagina(url);
         homePage.maximizarVentana();
@@ -121,7 +125,12 @@ public class Tests1 {
     }
 
     @Test
-    public void CP005() {
+    public void CP005_datosCliente() throws IOException {
+        datosCP = data.obtenerDatosPrueba("CP005_datosCliente");
+        homePage.accederAMiPanel();
+        datosClientePage.navegacionYEnvioDeCorreo(datosCP.get(1), datosCP.get(2), datosCP.get(3), datosCP.get(4), datosCP.get(5));
+
+        Assert.assertEquals(datosClientePage.numeroContacto(), datosCP.get(6));
 
     }
 
