@@ -4,17 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utilidades.ClaseBase;
 
-public class NavegarPage extends ClaseBase {
+public class SalirPage extends ClaseBase {
 
-    public NavegarPage(WebDriver driver) {
+    public SalirPage(WebDriver driver) {
         super(driver);
     }
 
     By locatorIngresaMailoURL = By.xpath("//input[@id='user-mail']");
     By locatorContraseña = By.xpath("//input[@id='pass']");
     By locatorIngresoATienda = By.xpath("//input[@value='Ingresar a mi tienda']");
-    By locatorMensajeError = By.xpath("//div[contains(text(),'Tu email o contraseña son incorrectos. Revisalos y')]");
-    By locatorMensajeInicio = By.xpath("//h1[contains(text(),'Inicio')]");
+
+
     By locatorSalirPocke = By.xpath("//p[contains(text(),'PokeStop')]");
     By locatorCerrarSesion = By.xpath("//body/div[@id='nimbus-popover-floating']/div[@id=':rf:']/div[1]/div[1]/div[2]/div[1]/button[1]/div[1]/p[1]");
     By locatorMensajeLogin = By.xpath("//h1[contains(text(),'Login')]");

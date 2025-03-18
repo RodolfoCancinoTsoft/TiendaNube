@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.NavegarPage;
+import pages.SalirPage;
 import utilidades.DataDriven;
 
 import java.io.IOException;
@@ -29,8 +29,8 @@ public class Tests1 {
     private String browser;
 
     private HomePage homePage;
-    private LoginPage pageDosLogin;
-    private NavegarPage pageTres;
+    private LoginPage loginPage;
+    private SalirPage salirPage;
 
     @BeforeSuite
     public void inicioSuitesDePreubas() {
@@ -62,8 +62,8 @@ public class Tests1 {
         homePage.prepararDriver(Duration.ofSeconds(20));
 
 
-        pageDosLogin = new LoginPage(homePage.getDriver());
-        pageTres = new NavegarPage(homePage.getDriver());
+        loginPage = new LoginPage(homePage.getDriver());
+        salirPage = new SalirPage(homePage.getDriver());
         String url = "https://www.tiendanube.com/";
         homePage.cargarPagina(url);
         homePage.maximizarVentana();
@@ -74,11 +74,11 @@ public class Tests1 {
     public void CP001_ingresoLogin() throws IOException {
         datosCP = data.obtenerDatosPrueba("CP001_ingresoLogin");
         homePage.accederAMiPanel();
-        pageDosLogin.formularioIngresoIncorrecto(datosCP.get(1), datosCP.get(2));
+        loginPage.formularioIngresoIncorrecto(datosCP.get(1), datosCP.get(2));
         //String resultadoEsperado = "Tu email o contraseña son incorrectos. Revisalos y volvé a intentar.";
         //String resltadoActual = pageDosLogin.mensajeError();
 
-        Assert.assertEquals(pageDosLogin.mensajeError(), datosCP.get(3));
+        Assert.assertEquals(loginPage.mensajeError(), datosCP.get(3));
     }
 
     @Test
@@ -86,11 +86,11 @@ public class Tests1 {
         datosCP = data.obtenerDatosPrueba("CP002_ingresoLoginCorrecto");
 
         homePage.accederAMiPanel();
-        pageDosLogin.formularioIngresoCprrecto(datosCP.get(1), datosCP.get(2));
+        loginPage.formularioIngresoCprrecto(datosCP.get(1), datosCP.get(2));
 
         //String resultadoActual = pageDosLogin.mensajeInicio();
 
-        Assert.assertEquals(pageDosLogin.mensajeInicio(), datosCP.get(3));
+        Assert.assertEquals(loginPage.mensajeInicio(), datosCP.get(3));
 
         //String resultadoEsperado = "¿Cuánto cuesta tener una Tiendanube?";
         //String resultadoActual = pageTres.informacionTiendaNube();
@@ -102,9 +102,9 @@ public class Tests1 {
     public void CP003_salirDePockeStop() throws IOException {
         datosCP = data.obtenerDatosPrueba("CP003_salirDePockeStop");
         homePage.accederAMiPanel();
-        pageDosLogin.salirDePockeStop(datosCP.get(1), datosCP.get(2));
+        salirPage.salirDePockeStop(datosCP.get(1), datosCP.get(2));
 
-        Assert.assertEquals(pageDosLogin.mensajeLogin(), datosCP.get(3));
+        Assert.assertEquals(salirPage.mensajeLogin(), datosCP.get(3));
 
     }
 

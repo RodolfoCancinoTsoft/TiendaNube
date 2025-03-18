@@ -15,10 +15,7 @@ public class LoginPage extends ClaseBase {
     By locatorIngresoATienda = By.xpath("//input[@value='Ingresar a mi tienda']");
     By locatorMensajeError = By.xpath("//div[contains(text(),'Tu email o contraseña son incorrectos. Revisalos y')]");
     By locatorMensajeInicio = By.xpath("//h1[contains(text(),'Inicio')]");
-    By locatorSalirPocke = By.xpath("//p[contains(text(),'PokeStop')]");
-    By locatorCerrarSesion = By.xpath("//body/div[@id='nimbus-popover-floating']/div[@id=':rf:']/div[1]/div[1]/div[2]/div[1]/button[1]/div[1]/p[1]");
-    By locatorMensajeLogin = By.xpath("//h1[contains(text(),'Login')]");
-    By locatorVentas = By.xpath("//p[contains(text(),'Ventas')]");
+
 
     //Acciones de la pagina ingreso y boton
     public void formularioIngresoIncorrecto(String mail, String pass) {
@@ -33,17 +30,6 @@ public class LoginPage extends ClaseBase {
         click2(esperarPorPrecenciaElemento(locatorIngresoATienda));
     }
 
-    public void salirDePockeStop(String mail, String pass) {
-        agregarTexto2(esperarPorElementoAClikear(locatorIngresaMailoURL), mail);
-        agregarTexto2(esperarPorElementoAClikear(locatorContraseña), pass);
-        click2(esperarPorPrecenciaElemento(locatorIngresoATienda));
-        click2(esperarPorPrecenciaElemento(locatorSalirPocke));
-        click2(esperarPorElementoAClikear(locatorCerrarSesion));
-    }
-
-    public String mensajeLogin() {
-        return obtenerTexto(esperarPorPrecenciaElemento(locatorMensajeLogin));
-    }
 
     public String mensajeError() {
         return obtenerTexto(esperarPorPrecenciaElemento(locatorMensajeError));
