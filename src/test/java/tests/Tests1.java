@@ -75,27 +75,24 @@ public class Tests1 {
         datosCP = data.obtenerDatosPrueba("CP001_ingresoLogin");
         homePage.accederAMiPanel();
         loginPage.formularioIngresoIncorrecto(datosCP.get(1), datosCP.get(2));
-        //String resultadoEsperado = "Tu email o contraseña son incorrectos. Revisalos y volvé a intentar.";
-        //String resltadoActual = pageDosLogin.mensajeError();
 
         Assert.assertEquals(loginPage.mensajeError(), datosCP.get(3));
+
+        //String resultadoEsperado = "Tu email o contraseña son incorrectos. Revisalos y volvé a intentar.";
+        //String resltadoActual = pageDosLogin.mensajeError();
     }
 
     @Test
     public void CP002_ingresoLoginCorrecto() throws IOException {
         datosCP = data.obtenerDatosPrueba("CP002_ingresoLoginCorrecto");
-
         homePage.accederAMiPanel();
         loginPage.formularioIngresoCprrecto(datosCP.get(1), datosCP.get(2));
 
-        //String resultadoActual = pageDosLogin.mensajeInicio();
-
         Assert.assertEquals(loginPage.mensajeInicio(), datosCP.get(3));
 
+        //String resultadoActual = pageDosLogin.mensajeInicio();
         //String resultadoEsperado = "¿Cuánto cuesta tener una Tiendanube?";
         //String resultadoActual = pageTres.informacionTiendaNube();
-
-
     }
 
     @Test
