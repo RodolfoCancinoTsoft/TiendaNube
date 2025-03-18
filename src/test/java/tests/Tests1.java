@@ -95,6 +95,7 @@ public class Tests1 {
         //String resultadoActual = pageTres.informacionTiendaNube();
     }
 
+    //termina luego la wea po oeee :D
     @Test
     public void CP003_salirDePockeStop() throws IOException {
         datosCP = data.obtenerDatosPrueba("CP003_salirDePockeStop");
