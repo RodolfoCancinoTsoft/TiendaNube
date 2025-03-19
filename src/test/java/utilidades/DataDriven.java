@@ -22,7 +22,7 @@ public class DataDriven {
 
         //Crear un objeto de tipo file o archivo
 
-        file = new FileInputStream("C:\\Users\\crown\\Desktop\\PageObjectModel\\src\\test\\resources\\dataExcel\\DatosDePrueba.xlsx");
+        file = new FileInputStream("C:\\Users\\crown\\Desktop\\Trabajos de Repaso\\PageObjectModel\\src\\test\\resources\\dataExcel\\DatosDePrueba.xlsx");
 
 
         //crear un objeto de tipo excell
