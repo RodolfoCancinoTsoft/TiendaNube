@@ -17,8 +17,6 @@ public class NavegacionPage extends ClaseBase {
     By locatorIngresoVentas = By.xpath("//p[contains(text(),'Ventas')]");
     By locatorBuscarPorCliente = By.xpath("//input[@placeholder='Buscar']");
     By locatorEncontarPorNombre = By.xpath("//input[@value='rodolfo']");
-    //By locatorLupa = By.xpath("//button[@data-testid='icon-search']");
-    By locatorContenedorBusqueda = By.xpath("//div[contains(@class, 'nimbus-input_appearance')]");
     By locatorMensajeEstadoVenta = By.xpath("//p[contains(text(),'Venta cancelada')]");
 
     public void navegacionDentroDeTiendaNube(String mail, String pass, String nombre) {
@@ -29,11 +27,6 @@ public class NavegacionPage extends ClaseBase {
         agregarTexto2(esperarPorElementoAClikear(locatorBuscarPorCliente), nombre);
         agregarEnteraUnTexto(locatorEncontarPorNombre, Keys.ENTER);
 
-        //agregarEnteraUnTexto(locatorBuscarPorCliente, Keys.ENTER);
-
-
-        //click2(esperarPorPrecenciaElemento(locatorLupa));
-        //click2(esperarPorElementoAClikear(locatorBuscarPorCliente));
 
     }
 
