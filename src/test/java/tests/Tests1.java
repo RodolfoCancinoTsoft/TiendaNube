@@ -14,6 +14,7 @@ import pages.LoginPage;
 import pages.NavegacionPage;
 import pages.SalirPage;
 import utilidades.DataDriven;
+import utilidades.PropertiesDriven;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -25,6 +26,7 @@ public class Tests1 {
     private DataDriven data;
     private List<String> datosCP;
     private WebDriverWait wait;
+    private PropertiesDriven properties;
 
     private String rutaDriver;
     private String property;
@@ -36,8 +38,10 @@ public class Tests1 {
     private NavegacionPage navegacionPage;
     private DatosClientePage datosClientePage;
 
+
     @BeforeSuite
     public void inicioSuitesDePreubas() {
+        properties = new PropertiesDriven();
         System.out.println("Inicio de suites de pruebas");
 
     }
@@ -47,13 +51,13 @@ public class Tests1 {
         //WebDriverManager.chromedriver().setup();
         //WebDriver driver = new ChromeDriver();
 
-        //Se crea String ruta proyecto y ase le asigna la variable de sistema user.dir
-        String rutaProyecto = System.getProperty("user.dir");
-        //Se crea variable rutaDriver con variable anterior mas extracto del path con la referencia del driver de google chrome
-        rutaDriver = rutaProyecto + "\\src\\test\\resources\\drivers\\chromedriver.exe";
-        property = "webdriver.chrome.driver";
-        browser = "chrome";
 
+        //Se crea String ruta proyecto y ase le asigna la variable de sistema user.dir
+        //String rutaProyecto = System.getProperty("user.dir"); se elimina
+        //Se crea variable rutaDriver con variable anterior mas extracto del path con la referencia del driver de google chrome
+        //rutaDriver = rutaProyecto + "\\src\\test\\resources\\drivers\\chromedriver.exe";  se elimina
+        //property = "webdriver.chrome.driver";se elimina
+        //browser = "chrome";se elimina
         data = new DataDriven();
 
 
@@ -62,16 +66,15 @@ public class Tests1 {
     @BeforeMethod
     public void preparacionTests() {
         homePage = new HomePage(driver);
-        homePage.conexionDriver(rutaDriver, property, browser);
+        homePage.conexionDriver(properties.obtenerUnaProperties("rutaDriver"), properties.obtenerUnaProperties("browserProperty"), properties.obtenerUnaProperties("browser"));
         homePage.prepararDriver(Duration.ofSeconds(20));
-
-
         loginPage = new LoginPage(homePage.getDriver());
         salirPage = new SalirPage(homePage.getDriver());
         navegacionPage = new NavegacionPage(homePage.getDriver());
         datosClientePage = new DatosClientePage(homePage.getDriver());
 
-        String url = "https://www.tiendanube.com/";
+
+        String url = properties.obtenerUnaProperties("url");
         homePage.cargarPagina(url);
         homePage.maximizarVentana();
 

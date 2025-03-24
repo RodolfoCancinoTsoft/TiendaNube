@@ -15,7 +15,7 @@ public class DatosClientePage extends ClaseBase {
     By locatorContraseña = By.xpath("//input[@id='pass']");
     By locatorIngresoATienda = By.xpath("//input[@value='Ingresar a mi tienda']");
     By locatorIngresoVentas = By.xpath("//p[contains(text(),'Ventas')]");
-    By locatorBuscarPorCliente = By.xpath("//input[@placeholder='Buscar por número o monto exacto de la venta, nombre o e-mail del cliente, nombre de quien retira']");
+    By locatorBuscarPorCliente = By.xpath("//input[@class='nimbus-input_input__rlcyv70']");
     By locatorNumeroVenta = By.xpath("//a[contains(text(),'#1843')]");
     By locatorMail = By.xpath("//a[contains(text(),'crownro213')]");
     By locatorIngresoAsunto = By.xpath("//input[@id='input_subject']");
@@ -32,8 +32,23 @@ public class DatosClientePage extends ClaseBase {
         agregarEnteraUnTexto(locatorBuscarPorCliente, Keys.ENTER);
         click2(esperarPorPrecenciaElemento(locatorNumeroVenta));
         click2(esperarPorPrecenciaElemento(locatorMail));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         agregarTexto2(esperarPorElementoAClikear(locatorIngresoAsunto), asunto);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         agregarTexto2(esperarPorElementoAClikear(locatorIngresoMensaje), mensaje);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         click2(esperarPorPrecenciaElemento(locatorBtncancelar));
 
     }

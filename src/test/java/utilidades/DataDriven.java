@@ -18,11 +18,14 @@ public class DataDriven {
     public List<String> obtenerDatosPrueba(String tituloCP) throws IOException {
         ArrayList<String> datos = new ArrayList<String>();
 
+        PropertiesDriven properties = new PropertiesDriven();
+
         FileInputStream file;
+
 
         //Crear un objeto de tipo file o archivo
 
-        file = new FileInputStream("C:\\Users\\crown\\Desktop\\Trabajos de Repaso\\PageObjectModel\\src\\test\\resources\\dataExcel\\DatosDePrueba.xlsx");
+        file = new FileInputStream(properties.obtenerUnaProperties("rutaExcel"));
 
 
         //crear un objeto de tipo excell
@@ -34,7 +37,7 @@ public class DataDriven {
         System.out.println("Cantidad de hojas " + cantidadHojasExcel);
 
         for (int i = 0; i < cantidadHojasExcel; i++) {
-            if (excel.getSheetName(i).equalsIgnoreCase("DatosCP")) {//"DatosCP" es el nombre de la hoja
+            if (excel.getSheetName(i).equalsIgnoreCase(properties.obtenerUnaProperties("nombreHojaExcel"))) {//"DatosCP" es el nombre de la hoja
                 XSSFSheet hojaExcel = excel.getSheetAt(i);
                 Iterator<Row> filas = hojaExcel.iterator();
                 Row primeraFila = filas.next();
@@ -47,7 +50,7 @@ public class DataDriven {
                 while (celda.hasNext()) {
                     Cell celdaSeleccionada = celda.next();
 
-                    if (celdaSeleccionada.getStringCellValue().equalsIgnoreCase("CasosDePrueba")) {//"CasosDePrueba" es el nobre de la columna
+                    if (celdaSeleccionada.getStringCellValue().equalsIgnoreCase(properties.obtenerUnaProperties("tituloCPs"))) {//"CasosDePrueba" es el nobre de la columna
                         columna = k;
                     }
                     k++;
